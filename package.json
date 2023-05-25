@@ -18,14 +18,16 @@
     "express-session": "^1.17.3",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
-    "mysql2": "^3.3.2",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
-    "pg": "^8.11.0",
-    "pg-hstore": "^2.3.4",
     "sequelize": "^6.31.1"
   },
   "devDependencies": {
+    "mysql2": "^3.3.2",
+    "nodemon": "^2.0.22",
+    "pg": "^8.11.0",
+    "pg-hstore": "^2.3.4",
+    "prettier": "^2.8.8",
     "sequelize-cli": "^6.6.0"
   }
 }

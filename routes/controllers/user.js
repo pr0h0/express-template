@@ -31,7 +31,7 @@ const register = async (req, res) => {
     email: normalizedEmail,
     username: normalizedUsername,
     password: hashedPassword,
-    isAdmin: false,
+    isAdmin: 0,
   });
 
   res.jsonSuccess({ data: null, msg: "User registered" });
@@ -55,7 +55,7 @@ const logout = async (req, res) => {
 module.exports = {
   register: asyncWrapper(register),
   login: {
-    auth: loginAuth,
+    auth: asyncWrapper(loginAuth),
     post: asyncWrapper(loginPost),
   },
   logout: asyncWrapper(logout),

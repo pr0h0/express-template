@@ -17,19 +17,23 @@ passport.use(
       passwordField: "password",
     },
     async (email, password, next) => {
-      const user = await userService.getByEmail(email);
+      try {
+        const user = await userService.getByEmail(email);
 
-      if (user) {
-        const isMatch = await userService.compareUserPassword(
-          password,
-          user.password
-        );
-        if (isMatch) {
-          next(null, user);
-          return;
+        if (user) {
+          const isMatch = await userService.compareUserPassword(
+            password,
+            user.password
+          );
+          if (isMatch) {
+            next(null, user);
+            return;
+          }
         }
+        next(null, false, { message: "Invalid username or password" });
+      } catch (err) {
+        next(err);
       }
-      next(null, false, { message: "Invalid username or password" });
     }
   )
 );
